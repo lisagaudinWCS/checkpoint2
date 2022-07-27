@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Cupcake from "@components/Cupcake";
 import axios from "axios";
+import Cupcake from "../components/Cupcake";
 
 // Create a CupcakeDetails page. Add a route to display this page with the path /cupcakes/:id.
 // You should wrap each cupcake in CupcakeList with a <Link /> towards the CupcakeDetails page.
@@ -16,21 +16,18 @@ function CupcakeDetails() {
     axios
       .get(`http://localhost:4000/cupcakes/${id}`)
       .then((response) => response.data)
-      .then((cupcake) => setCupcakeDetails(cupcake))
+      .then((cupcake) => setCupcakeDetails(cupcake));
   }, []);
 
   return (
-    <>
     <ul className="cupcake-list" id="cupcake-list">
-        {cupcakeDetails &&
-                <div className="cupcake-item">
-                  <Cupcake 
-                    cupcake={cupcakeDetails}/>
-                </div>
-        }
-      </ul>
-        </>
-    );
+      {cupcakeDetails && (
+        <div className="cupcake-item">
+          <Cupcake cupcake={cupcakeDetails} />
+        </div>
+      )}
+    </ul>
+  );
 }
 
 export default CupcakeDetails;
