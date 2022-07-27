@@ -21,12 +21,14 @@ function CupcakeDetails() {
 
   return (
     <>
+    <ul className="cupcake-list" id="cupcake-list">
         {cupcakeDetails &&
                 <div className="cupcake-item">
                   <Cupcake 
                     cupcake={cupcakeDetails}/>
                 </div>
         }
+      </ul>
         </>
     );
 }
